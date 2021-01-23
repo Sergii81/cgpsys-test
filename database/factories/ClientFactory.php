@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Client;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ClientFactory extends Factory
@@ -22,7 +23,9 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'client_name' => $this->faker->name
+            'client_name' => $this->faker->name,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ];
     }
 }
