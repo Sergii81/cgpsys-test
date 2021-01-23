@@ -22,7 +22,7 @@ class ApiController extends Controller
 
     /**
      * @param $company_id
-     * @return ClientResource|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return ClientResource|\Illuminate\Http\JsonResponse
      */
     public function getClients($company_id)
     {
@@ -31,14 +31,14 @@ class ApiController extends Controller
             if(Client::where('company_id', $company_id)->get()->isNotempty()) {
                 return new ClientResource(Client::where('company_id', $company_id)->paginate(100));
             } else {
-                return response(json_encode([
+                return response()->json([
                     'message' => 'Company  '. $company->company_name.' don\'t have clients'
-                ]));
+                ]);
             }
         } else {
-            return response(json_encode([
+            return response()->json([
                 'message' => 'Company with id = '. $company_id.' not found'
-            ]));
+            ]);
         }
 
 
@@ -46,7 +46,7 @@ class ApiController extends Controller
 
     /**
      * @param $client_id
-     * @return CompanyResource|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return CompanyResource|\Illuminate\Http\JsonResponse
      */
     public function getClientCompany($client_id)
     {
@@ -55,9 +55,9 @@ class ApiController extends Controller
         if(!empty($client)) {
             return new CompanyResource(Company::where('id', $client->company_id)->get());
         } else {
-            return response(json_encode([
+            return response()->json([
                 'message' => 'Client with id = '. $client_id.' not found'
-            ]));
+            ]);
         }
     }
 }
