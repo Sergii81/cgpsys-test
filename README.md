@@ -10,7 +10,6 @@ cp .env.example .env (+update config variables)
 
 php artisan key:generate
 
-chmod -R 777 storage
 
 php artisan migrate
 
@@ -38,7 +37,7 @@ Response - user data
 
 Request - http://project-name/api/login
 
-Response - access token
+Response - access token for bearer authorization
 #
 - GET companies - get companies list
 
