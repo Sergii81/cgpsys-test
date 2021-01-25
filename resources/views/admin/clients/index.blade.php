@@ -31,7 +31,7 @@
                                 <td>{{$client->companies->company_name ?? ''}}</td>
                                 <td>
                                     <a class="btn btn-warning" href="{{route('admin.client.edit.form', $client->id)}}">{{__('Edit')}}</a>
-                                    <a class="btn btn-danger" href="{{route('admin.client.delete', $client->id)}}">{{__('Delete')}}
+                                    <a class="btn btn-danger" href="{{route('admin.client.delete', $client->id)}}">{{__('Delete')}}</a>
                                 </td>
                             </tr>
 
